@@ -39,24 +39,20 @@ public class InicioController {
 	private void onAccederButton(ActionEvent e) {
 		archivoCSV();
 		String md5 = DigestUtils.md5Hex(model.getContraseña()).toUpperCase();
-		try {
-			if (usuarioArray.contains(model.getUsuario()) && contraseñaArray.contains(md5)) {
-				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Iniciar sesión");
-				alert.setHeaderText("Acceso permitido");
-				alert.setContentText("Las credenciales de acceso son válidas.");
+		if (usuarioArray.contains(model.getUsuario()) && contraseñaArray.contains(md5)) {
+			Alert infoAlert = new Alert(AlertType.INFORMATION);
+			infoAlert.setTitle("Iniciar sesión");
+			infoAlert.setHeaderText("Acceso permitido");
+			infoAlert.setContentText("Las credenciales de acceso son válidas.");
 
-				alert.showAndWait();
-			} else {
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setTitle("Iniciar sesión");
-				alert.setHeaderText("Acceso denegado");
-				alert.setContentText("El usuario y/o la contraseña no son válidos.");
+			infoAlert.showAndWait();
+		} else {
+			Alert errorAlert = new Alert(AlertType.ERROR);
+			errorAlert.setTitle("Iniciar sesión");
+			errorAlert.setHeaderText("Acceso denegado");
+			errorAlert.setContentText("El usuario y/o la contraseña no son válidos.");
 
-				alert.showAndWait();
-			}
-		} catch (NumberFormatException error) {
-
+			errorAlert.showAndWait();
 		}
 	}
 
