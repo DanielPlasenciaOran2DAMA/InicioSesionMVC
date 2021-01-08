@@ -32,10 +32,6 @@ public class InicioController {
 		view.getCancelarButton().setOnAction(e -> onCancelarButton(e));
 	}
 
-	public InicioView getView() {
-		return view;
-	}
-
 	private void onAccederButton(ActionEvent e) {
 		archivoCSV();
 		String md5 = DigestUtils.md5Hex(model.getContraseña()).toUpperCase();
@@ -56,6 +52,10 @@ public class InicioController {
 		}
 	}
 
+	public void onCancelarButton(ActionEvent e) {
+		primaryStage.close();
+	}
+
 	private void archivoCSV() {
 		URL url = getClass().getResource("csv/users.csv");
 		String separador = ",";
@@ -70,7 +70,6 @@ public class InicioController {
 				usuarioArray.add(datos[0]);
 				contraseñaArray.add(datos[1]);
 			}
-
 			br.close();
 		} catch (IOException e1) {
 			System.err.println(e1.getMessage());
@@ -78,7 +77,7 @@ public class InicioController {
 
 	}
 
-	public void onCancelarButton(ActionEvent e) {
-		primaryStage.close();
+	public InicioView getView() {
+		return view;
 	}
 }

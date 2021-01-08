@@ -6,4 +6,11 @@ public class Main {
 		InicioSesion.main(args);
 
 	}
+	
+	/*
+	 * Usuarios,Contraseñas:
+	 * chuck,norris
+	 * charles,bronson
+	 * david,carradine
+	*/
 }

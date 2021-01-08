@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 
 public class InicioView extends VBox {
 
+	private Label usuarioLabel, passwordLabel;
 	private TextField usuarioText;
 	private PasswordField contraseñaText;
 	private Button accederButton, cancelarButton;
@@ -19,39 +20,44 @@ public class InicioView extends VBox {
 	public InicioView() {
 		super();
 
+		usuarioLabel = new Label("Usuario: ");
+		passwordLabel = new Label("Contraseña: ");
+
 		usuarioText = new TextField();
-		usuarioText.setPrefColumnCount(5);
+		usuarioText.setPromptText("Usuario");
 
 		contraseñaText = new PasswordField();
-		contraseñaText.setPrefColumnCount(5);
+		contraseñaText.setPromptText("Contraseña");
 
 		accederButton = new Button("Acceder");
 		accederButton.setDefaultButton(true);
 		cancelarButton = new Button("Cancelar");
 
-		GridPane introduceDatosGrid = new GridPane();
-		introduceDatosGrid.setHgap(5);
-		introduceDatosGrid.setVgap(5);
-		introduceDatosGrid.setPadding(new Insets(15));
-		introduceDatosGrid.setAlignment(Pos.BASELINE_CENTER);
-		introduceDatosGrid.addRow(0, new Label("Usuario: "), usuarioText);
-		introduceDatosGrid.addRow(1, new Label("Contraseña: "), contraseñaText);
+		HBox botonHbox = new HBox(5, accederButton, cancelarButton);
+		botonHbox.setAlignment(Pos.BASELINE_CENTER);
 
-		HBox botonesBox = new HBox(5, accederButton, cancelarButton);
-		botonesBox.setFillHeight(false);
-		botonesBox.setAlignment(Pos.CENTER);
+		GridPane grid = new GridPane();
+		grid.setHgap(40);
+		grid.setVgap(15);
+		grid.setPadding(new Insets(15));
+		grid.setAlignment(Pos.BASELINE_CENTER);
 
-		setSpacing(5);
-		setFillWidth(false);
-		setAlignment(Pos.CENTER);
-		getChildren().addAll(introduceDatosGrid, botonesBox);
+		// grid.setGridLinesVisible(true);
+
+		grid.addRow(0, usuarioLabel, usuarioText);
+		grid.addRow(1, passwordLabel, contraseñaText);
+
+		this.setPadding(new Insets(15));
+		this.setAlignment(Pos.CENTER);
+		this.getChildren().addAll(grid, botonHbox);
 	}
 
+	// necesitamos los getters para poder obtener los datos desde controller
 	public TextField getUsuarioText() {
 		return usuarioText;
 	}
 
-	public PasswordField getContraseñaText() {
+	public PasswordField getPasswordText() {
 		return contraseñaText;
 	}
 

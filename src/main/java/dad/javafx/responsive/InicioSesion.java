@@ -13,12 +13,11 @@ public class InicioSesion extends Application {
 
 		inicioController = new InicioController(primaryStage);
 
-		Scene scene = new Scene(inicioController.getView(), 320, 150);
+		Scene scene = new Scene(inicioController.getView(), 320, 200);
 
 		primaryStage.setTitle("Iniciar sesión");
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);
-		primaryStage.centerOnScreen();
 		primaryStage.show();
 	}
 
