@@ -26,14 +26,14 @@ public class InicioController {
 		this.primaryStage = primaryStage;
 
 		model.usuarioProperty().bind(view.getUsuarioText().textProperty());
-		model.contraseñaProperty().bind(view.getContraseñaText().textProperty());
+		model.contraseñaProperty().bind(view.getPasswordText().textProperty());
 
-		view.getAccederButton().setOnAction(e -> onAccederButton(e));
-		view.getCancelarButton().setOnAction(e -> onCancelarButton(e));
+		view.getAccederButton().setOnAction(e -> onAccederActionButton(e));
+		view.getCancelarButton().setOnAction(e -> onCancelarActionButton(e));
 	}
 
-	private void onAccederButton(ActionEvent e) {
-		archivoCSV();
+	private void onAccederActionButton(ActionEvent e) {
+		cargarArchivoCSV();
 		String md5 = DigestUtils.md5Hex(model.getContraseña()).toUpperCase();
 		if (usuarioArray.contains(model.getUsuario()) && contraseñaArray.contains(md5)) {
 			Alert infoAlert = new Alert(AlertType.INFORMATION);
@@ -52,11 +52,11 @@ public class InicioController {
 		}
 	}
 
-	public void onCancelarButton(ActionEvent e) {
+	public void onCancelarActionButton(ActionEvent e) {
 		primaryStage.close();
 	}
 
-	private void archivoCSV() {
+	private void cargarArchivoCSV() {
 		URL url = getClass().getResource("csv/users.csv");
 		String separador = ",";
 

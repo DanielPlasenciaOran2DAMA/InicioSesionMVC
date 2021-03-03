@@ -12,16 +12,12 @@ import javafx.scene.layout.VBox;
 
 public class InicioView extends VBox {
 
-	private Label usuarioLabel, passwordLabel;
 	private TextField usuarioText;
 	private PasswordField contraseñaText;
 	private Button accederButton, cancelarButton;
 
 	public InicioView() {
 		super();
-
-		usuarioLabel = new Label("Usuario: ");
-		passwordLabel = new Label("Contraseña: ");
 
 		usuarioText = new TextField();
 		usuarioText.setPromptText("Usuario");
@@ -42,17 +38,14 @@ public class InicioView extends VBox {
 		grid.setPadding(new Insets(15));
 		grid.setAlignment(Pos.BASELINE_CENTER);
 
-		// grid.setGridLinesVisible(true);
-
-		grid.addRow(0, usuarioLabel, usuarioText);
-		grid.addRow(1, passwordLabel, contraseñaText);
+		grid.addRow(0, new Label("Usuario: "), usuarioText);
+		grid.addRow(1, new Label("Contraseña: "), contraseñaText);
 
 		this.setPadding(new Insets(15));
 		this.setAlignment(Pos.CENTER);
 		this.getChildren().addAll(grid, botonHbox);
 	}
 
-	// necesitamos los getters para poder obtener los datos desde controller
 	public TextField getUsuarioText() {
 		return usuarioText;
 	}

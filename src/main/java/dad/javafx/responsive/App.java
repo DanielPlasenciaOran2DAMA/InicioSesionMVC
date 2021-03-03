@@ -4,7 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class InicioSesion extends Application {
+public class App extends Application {
 
 	private InicioController inicioController;
 
